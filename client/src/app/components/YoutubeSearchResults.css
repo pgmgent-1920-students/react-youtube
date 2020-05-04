@@ -1,0 +1,17 @@
+.youtube-search-results {
+
+}
+
+.youtube-search-results > div {
+  margin-bottom: 30px;
+}
+
+.youtube-search-results__item {
+
+}
+
+.youtube-search-results__item .picture > img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
