@@ -9,7 +9,7 @@ const YoutubeSearchResults = ({results}) => {
     <div className="row youtube-search-results align-items-center">
       {results && results.map((item, index) => { 
         return (
-          <YoutubeSearchResultsItem item={item} key={index} />
+          <YoutubeSearchResultsItem item={item} key={item.etag} />
         )
       })}
     </div>

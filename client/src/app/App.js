@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { YoutubeApi } from './services';
-import { YoutubeSearchResults } from './components';
+import { YoutubeSearchResults, YoutubeSearchForm } from './components';
 
 import './App.css';
 
@@ -17,17 +17,21 @@ const App = () => {
   const [searchResults, setSearchResults] = useState(null);
   
   useEffect(() => {
-    const fetchData = async () => {
-      const json = await YoutubeApi.getSearchResults(searchStrings[Math.floor(Math.random()*searchStrings.length)]);
-      setSearchResults(json);
-    };
-
-    fetchData();
   }, []);
+
+  const fetchData = async (q) => {
+    const json = await YoutubeApi.getSearchResults(q);
+    setSearchResults(json);
+  };
+
+  const handleSearch = async (q) => {
+    await fetchData(q);
+  };
 
   return (
     <div className="app">
       <div className="container-fluid">
+        <YoutubeSearchForm search={handleSearch} />
         <YoutubeSearchResults results={(searchResults) ? searchResults.items : []} />
       </div>      
     </div>
